@@ -1,0 +1,87 @@
+*, *::after, *::before{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: sans-serif;
+}
+
+:root{
+  font-size: 62.5%;
+}
+
+body{
+  width: 100%;
+  min-height: 100vh;
+  padding: 3rem;
+  background-color: #f7f7f7;
+  font-size: 1.6rem;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2rem;
+}
+
+.title{
+  margin-bottom: 2rem;
+  font-size: 2.5rem;
+  text-align: center;
+
+  display: flex;
+  justify-content: center;
+
+  position: relative;
+}
+
+.title::before{
+  content: '';
+  position: absolute;
+  top: 110%;
+
+  width: 65%;
+  height: .2rem;
+  background-color: #000;
+  border-radius: 5rem;
+}
+
+.exemplo1,
+.exemplo2{
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2rem;
+}
+
+.wrapper{
+  width: 100%;
+  padding: 1.6rem;
+  background-color: #FFF;
+  border-radius: 2rem;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 4rem;
+}
+
+table{
+  border-collapse: collapse;
+  background-color: #FFF;
+}
+
+table th,
+table td{
+  padding: .7rem 2rem;
+  text-align: center;
+  border: 1px solid #c7c7c7;
+}
+
+#chart1,
+#chart2,
+#chart3,
+#chart4{
+  width: 100%;
+}
+
