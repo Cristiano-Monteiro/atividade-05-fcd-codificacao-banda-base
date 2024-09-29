@@ -20,20 +20,29 @@ function codificacaoManchester(sequencia){
     };
   };
 
+  console.log(`# Seq. bits: ${sequencia}`);
+  console.log('# Representação Manchester:', representacaoManchester);
+
+  // bit adicional APENAS para melhorar a visualização no gráfico
   if(representacaoManchester[representacaoManchester.length-1] === 0){
     representacaoManchester.push(0);
   } else {
     representacaoManchester.push(1);
   };
 
-  console.log(`# Seq. bits: ${sequencia}`);
-  console.log('# Representação Manchester:', representacaoManchester);
-
   return representacaoManchester;
 };
 
 function converterIntArr(number){
-  return Array.from(String(number), Number);
+  let intArr = Array.from(String(number), Number);
+
+  // bit adicional APENAS para melhorar a visualização no gráfico
+  if(intArr[intArr.length-1] === 1){
+    intArr.push(1);
+  } else {
+    intArr.push(0);
+  };
+  return intArr;
 };
 
 
@@ -41,22 +50,6 @@ const representacaoManchester1 = codificacaoManchester(sequencia1_bits);
 const representacaoManchester2 = codificacaoManchester(sequencia2_bits);
 
 //========================================================================
-//========================================================================
-const numSeqBits1 = document.getElementById('numSeqBits1');
-const numEsquema1 = document.getElementById('numEsquema1');
-const numSeqBits2 = document.getElementById('numSeqBits2');
-const numEsquema2 = document.getElementById('numEsquema2');
-
-const colManchester1 = [...representacaoManchester1];
-colManchester1.pop();
-
-const colManchester2 = [...representacaoManchester2];
-colManchester2.pop();
-
-numSeqBits1.innerText = sequencia1_bits;
-numEsquema1.innerText = colManchester1.join('');
-numSeqBits2.innerText = sequencia2_bits;
-numEsquema2.innerText = colManchester2.join('');
 
 const seqBitsArr1 = converterIntArr(sequencia1_bits);
 const seqBitsArr2 = converterIntArr(sequencia2_bits);

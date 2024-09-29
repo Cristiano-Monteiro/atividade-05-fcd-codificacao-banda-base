@@ -20,12 +20,11 @@ function codificacaoManchester(sequencia){
     };
   };
 
+  console.log('==== Codificação Manchester ====');
   console.log(`# Seq. bits: ${sequencia}`);
-  console.log('# Representação Manchester:', representacaoManchester);
-
-  return representacaoManchester;
+  console.log(`# Representação Manchester: ${representacaoManchester.join('')}`);
+  console.log(' ');
 };
 
-const teste = '1010';
-
-const representacaoManchester = codificacaoManchester(teste);
+codificacaoManchester(sequencia1_bits);
+codificacaoManchester(sequencia2_bits);

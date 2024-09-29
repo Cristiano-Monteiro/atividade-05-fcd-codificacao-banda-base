@@ -1,5 +1,6 @@
 /*
-# NRZ: os bits de transmissão são representados por níveis de tensão, que é constante durante o período na qual está ativo (0 -> tensão baixa, 1 -> tensão alta)
+# NRZ: os bits de transmissão são representados por níveis de tensão, que é constante 
+durante o período na qual está ativo (0 -> tensão baixa, 1 -> tensão alta)
 
 # Neste trabalho, adotaremos o seguintes padrões na relação bit -> tensão:
 bit 0: 0V
@@ -13,10 +14,7 @@ const tensaoBaixa = 0;
 const tensaoAlta = 5;
 
 function codificacaoNRZ(sequencia_bits){
-  console.log('# Iniciando codificação NRZ da sequência de bits:', sequencia_bits);
-
   let seq_bits_string = sequencia_bits.toString();
-
   let representacaoNRZ = [];
 
   for(let i = 0; i < seq_bits_string.length; i++){
@@ -27,12 +25,11 @@ function codificacaoNRZ(sequencia_bits){
     };
   };
 
-  console.log('# Representação RNZ:', representacaoNRZ);
-
-  return {representacaoNRZ};
+  console.log('==== Codificação NRZ ====');
+  console.log(`# Seq. bits: ${sequencia_bits}`);
+  console.log(`# Representação NRZ: ${representacaoNRZ.join('')}`);
+  console.log(' ');
 };
 
-
-const teste = 1101001;
-
-const {representacaoNRZ} = codificacaoNRZ(teste);
+codificacaoNRZ(sequencia1_bits);
+codificacaoNRZ(sequencia2_bits);

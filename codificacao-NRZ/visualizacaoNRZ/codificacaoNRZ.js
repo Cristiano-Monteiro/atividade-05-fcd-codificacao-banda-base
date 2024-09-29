@@ -25,31 +25,39 @@ function codificacaoNRZ(sequencia_bits){
     };
   };
 
+  console.log(`# Seq. bits: ${sequencia_bits}`);
+  console.log('# Representação NRZ:', representacaoNRZ);
+
+  // bit adicional APENAS para melhorar a visualização no gráfico
+  if(representacaoNRZ[representacaoNRZ.length-1] === tensaoAlta){
+    representacaoNRZ.push(tensaoAlta);
+  } else {
+    representacaoNRZ.push(tensaoBaixa);
+  };
+
   return representacaoNRZ;
 };
 
 function converterIntArr(number){
-  return Array.from(String(number), Number);
+  let intArr = Array.from(String(number), Number);
+
+  // bit adicional APENAS para melhorar a visualização no gráfico
+  if(intArr[intArr.length-1] === 1){
+    intArr.push(1);
+  } else {
+    intArr.push(0);
+  };
+  
+  return intArr;
 };
 
 const representacaoNRZ1 = codificacaoNRZ(sequencia1_bits);
 const representacaoNRZ2 = codificacaoNRZ(sequencia2_bits);
 
 //========================================================================
-//========================================================================
-const numSeqBits1 = document.getElementById('numSeqBits1');
-const numNRZ1 = document.getElementById('numNRZ1');
-const numSeqBits2 = document.getElementById('numSeqBits2');
-const numNRZ2 = document.getElementById('numNRZ2');
-
-numSeqBits1.innerText = sequencia1_bits;
-numNRZ1.innerText = representacaoNRZ1.join('');
-numSeqBits2.innerText = sequencia2_bits;
-numNRZ2.innerText = representacaoNRZ2.join('');
 
 const seqBitsArr1 = converterIntArr(sequencia1_bits);
 const seqBitsArr2 = converterIntArr(sequencia2_bits);
-
 
 const titleStyle = {
   fontSize: '1.6rem',
@@ -61,6 +69,41 @@ const titleY_style = {
 
 const labelAxis_style = {
   fontSize: '1.2rem',
+};
+
+const xAxis = {
+  //categories: ['1', '2', '3', '4', '5', '6', '7', '8', '9', '10', '11', '12'],
+  labels: {
+    enabled: false,
+    style: labelAxis_style,
+  },
+  gridLineWidth: 2,
+};
+
+const yAxis1 = {
+  title: {
+    text: 'bit',
+    style: titleY_style,
+    enabled: false,
+  },
+  labels: {
+    style: labelAxis_style,
+  },
+  max: 1,
+  min: 0,
+};
+
+const yAxis2 = {
+  title: {
+    text: 'bit',
+    style: titleY_style,
+    enabled: false,
+  },
+  labels: {
+    style: labelAxis_style,
+  },
+  max: tensaoAlta,
+  min: tensaoBaixa,
 };
 
 const plotOptions = {
@@ -85,25 +128,8 @@ var chart1 = new Highcharts.Chart({
     text: 'Sequência de bits',
     style: titleStyle,
   },
-  xAxis: {
-    categories: ['1', '2', '3', '4', '5', '6', '7', '8', '9', '10', '11', '12'],
-    labels: {
-      enabled: false,
-      style: labelAxis_style,
-    },
-  },
-  yAxis: {
-    title: {
-      text: 'bit',
-      style: titleY_style,
-    },
-    labels: {
-      style: labelAxis_style,
-    },
-    max: 1,
-    min: 0,
-    //plotLines: [{value: 0, width: 1, color: '#808080'}]
-  },
+  xAxis: xAxis,
+  yAxis: yAxis1,
   tooltip: {enabled: false},
   legend: {enabled: false,},
   plotOptions: plotOptions,
@@ -124,25 +150,8 @@ var chart2 = new Highcharts.Chart({
     text: 'Representação NRZ',
     style: titleStyle,
   },
-  xAxis: {
-    categories: ['1', '2', '3', '4', '5', '6', '7', '8', '9', '10', '11', '12'],
-    labels: {
-      enabled: false,
-      style: labelAxis_style,
-    },
-  },
-  yAxis: {
-    title: {
-      text: 'Tensão',
-      style: titleY_style,
-    },
-    labels: {
-      style: labelAxis_style,
-    },
-    max: 5,
-    min: 0,
-    //plotLines: [{value: 0, width: 1, color: '#808080'}]
-  },
+  xAxis: xAxis,
+  yAxis: yAxis2,
   tooltip: {enabled: false},
   legend: {enabled: false,},
   plotOptions: plotOptions,
@@ -163,25 +172,8 @@ var chart3 = new Highcharts.Chart({
     text: 'Sequência de bits',
     style: titleStyle,
   },
-  xAxis: {
-    categories: ['1', '2', '3', '4', '5', '6', '7', '8', '9', '10', '11', '12'],
-    labels: {
-      enabled: false,
-      style: labelAxis_style,
-    },
-  },
-  yAxis: {
-    title: {
-      text: 'bit',
-      style: titleY_style,
-    },
-    labels: {
-      style: labelAxis_style,
-    },
-    max: 1,
-    min: 0,
-    //plotLines: [{value: 0, width: 1, color: '#808080'}]
-  },
+  xAxis: xAxis,
+  yAxis: yAxis1,
   tooltip: {enabled: false},
   legend: {enabled: false,},
   plotOptions: plotOptions,
@@ -202,25 +194,8 @@ var chart4 = new Highcharts.Chart({
     text: 'Representação NRZ',
     style: titleStyle,
   },
-  xAxis: {
-    categories: ['1', '2', '3', '4', '5', '6', '7', '8', '9', '10', '11', '12'],
-    labels: {
-      enabled: false,
-      style: labelAxis_style,
-    },
-  },
-  yAxis: {
-    title: {
-      text: 'Tensão',
-      style: titleY_style,
-    },
-    labels: {
-      style: labelAxis_style,
-    },
-    max: 5,
-    min: 0,
-    //plotLines: [{value: 0, width: 1, color: '#808080'}]
-  },
+  xAxis: xAxis,
+  yAxis: yAxis2,
   tooltip: {enabled: false},
   legend: {enabled: false,},
   plotOptions: plotOptions,
